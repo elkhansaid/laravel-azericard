@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Srustamov\Azericard;
+namespace Elkhansaid\Azericard;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Traits\Conditionable;
-use Srustamov\Azericard\Contracts\ClientContract;
-use Srustamov\Azericard\Contracts\SignatureGeneratorContract;
-use Srustamov\Azericard\DataProviders\RefundData;
-use Srustamov\Azericard\Exceptions\FailedTransactionException;
-use Srustamov\Azericard\Exceptions\SignatureDoesNotMatchException;
-use Srustamov\Azericard\Exceptions\ValidationException;
+use Elkhansaid\Azericard\Contracts\ClientContract;
+use Elkhansaid\Azericard\Contracts\SignatureGeneratorContract;
+use Elkhansaid\Azericard\DataProviders\RefundData;
+use Elkhansaid\Azericard\Exceptions\FailedTransactionException;
+use Elkhansaid\Azericard\Exceptions\SignatureDoesNotMatchException;
+use Elkhansaid\Azericard\Exceptions\ValidationException;
 use Throwable;
 
 

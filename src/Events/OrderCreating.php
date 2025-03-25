@@ -1,10 +1,10 @@
 <?php
 
-namespace Srustamov\Azericard\Events;
+namespace Elkhansaid\Azericard\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Srustamov\Azericard\Azericard;
+use Elkhansaid\Azericard\Azericard;
 
 class OrderCreating
 {
@@ -14,7 +14,5 @@ class OrderCreating
         public string $orderId,
         public int|float $amount,
         public Azericard &$azericard,
-    )
-    {
-    }
+    ) {}
 }

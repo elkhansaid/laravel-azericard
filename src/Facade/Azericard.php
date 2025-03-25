@@ -1,22 +1,22 @@
 <?php
 
-namespace Srustamov\Azericard\Facade;
+namespace Elkhansaid\Azericard\Facade;
 
 use Illuminate\Support\Facades\Facade;
-use Srustamov\Azericard\Options;
+use Elkhansaid\Azericard\Options;
 
 /**
- * @method static \Srustamov\Azericard\Azericard setAmount(float|int $amount)
- * @method static \Srustamov\Azericard\Azericard setOrder(string $order)
- * @method static \Srustamov\Azericard\Azericard setDebug(bool $debug)
- * @method static \Srustamov\Azericard\Azericard setOptions(Options $options)
+ * @method static \Elkhansaid\Azericard\Azericard setAmount(float|int $amount)
+ * @method static \Elkhansaid\Azericard\Azericard setOrder(string $order)
+ * @method static \Elkhansaid\Azericard\Azericard setDebug(bool $debug)
+ * @method static \Elkhansaid\Azericard\Azericard setOptions(Options $options)
  * @method static boolean completeOrder($request)
- * @see \Srustamov\Azericard\Azericard
+ * @see \Elkhansaid\Azericard\Azericard
  */
 class Azericard extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Srustamov\Azericard\Azericard::class;
+        return \Elkhansaid\Azericard\Azericard::class;
     }
 }

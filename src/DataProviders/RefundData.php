@@ -1,6 +1,6 @@
 <?php
 
-namespace Srustamov\Azericard\DataProviders;
+namespace Elkhansaid\Azericard\DataProviders;
 
 use Carbon\CarbonInterface;
 use DateTimeInterface;
@@ -11,6 +11,5 @@ final class RefundData
         public string $rrn,
         public string $int_ref,
         public string|DateTimeInterface|CarbonInterface $created_at,
-    ) {
-    }
+    ) {}
 }

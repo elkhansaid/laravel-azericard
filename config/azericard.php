@@ -1,7 +1,7 @@
 <?php
 
-use Srustamov\Azericard\Options;
-use Srustamov\Azericard\SignatureGenerator;
+use Elkhansaid\Azericard\Options;
+use Elkhansaid\Azericard\SignatureGenerator;
 
 return [
     //test mode

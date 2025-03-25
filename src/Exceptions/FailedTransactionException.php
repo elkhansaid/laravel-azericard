@@ -1,11 +1,11 @@
 <?php
 
-namespace Srustamov\Azericard\Exceptions;
+namespace Elkhansaid\Azericard\Exceptions;
 
 
 /**
  * Class FailedTransactionException
- * @package Srustamov\Azericard\Exceptions
+ * @package Elkhansaid\Azericard\Exceptions
  */
 class FailedTransactionException extends AzericardException
 {

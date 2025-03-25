@@ -1,6 +1,6 @@
 <?php
 
-namespace Srustamov\Azericard\Events;
+namespace Elkhansaid\Azericard\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -13,7 +13,5 @@ class OrderCompleted
         public array $request,
         public array $data,
         public string $response,
-    )
-    {
-    }
+    ) {}
 }

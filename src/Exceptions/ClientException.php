@@ -1,7 +1,5 @@
 <?php
 
-namespace Srustamov\Azericard\Exceptions;
+namespace Elkhansaid\Azericard\Exceptions;
 
-class ClientException extends \RuntimeException
-{
-}
+class ClientException extends \RuntimeException {}

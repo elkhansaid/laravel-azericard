@@ -1,17 +1,17 @@
 <?php
 
-namespace Srustamov\Azericard\Tests;
+namespace Elkhansaid\Azericard\Tests;
 
 use Illuminate\Support\Facades\Event;
-use Srustamov\Azericard\Client;
-use Srustamov\Azericard\Contracts\SignatureGeneratorContract;
-use Srustamov\Azericard\DataProviders\RefundData;
-use Srustamov\Azericard\Events\OrderCompleted;
-use Srustamov\Azericard\Events\OrderCreated;
-use Srustamov\Azericard\Events\OrderCreating;
-use Srustamov\Azericard\Events\OrderRefunded;
-use Srustamov\Azericard\Facade\Azericard;
-use Srustamov\Azericard\Options;
+use Elkhansaid\Azericard\Client;
+use Elkhansaid\Azericard\Contracts\SignatureGeneratorContract;
+use Elkhansaid\Azericard\DataProviders\RefundData;
+use Elkhansaid\Azericard\Events\OrderCompleted;
+use Elkhansaid\Azericard\Events\OrderCreated;
+use Elkhansaid\Azericard\Events\OrderCreating;
+use Elkhansaid\Azericard\Events\OrderRefunded;
+use Elkhansaid\Azericard\Facade\Azericard;
+use Elkhansaid\Azericard\Options;
 
 class AzericardTest extends TestCase
 {

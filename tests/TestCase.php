@@ -1,11 +1,11 @@
 <?php
 
-namespace Srustamov\Azericard\Tests;
+namespace Elkhansaid\Azericard\Tests;
 
 use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Srustamov\Azericard\AzericardServiceProvider;
-use Srustamov\Azericard\SignatureGenerator;
+use Elkhansaid\Azericard\AzericardServiceProvider;
+use Elkhansaid\Azericard\SignatureGenerator;
 
 abstract class TestCase extends Orchestra
 {

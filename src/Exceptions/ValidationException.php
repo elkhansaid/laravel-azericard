@@ -1,7 +1,5 @@
 <?php
 
-namespace Srustamov\Azericard\Exceptions;
+namespace Elkhansaid\Azericard\Exceptions;
 
-class ValidationException extends AzericardException
-{
-}
+class ValidationException extends AzericardException {}

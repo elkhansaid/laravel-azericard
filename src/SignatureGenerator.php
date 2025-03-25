@@ -1,10 +1,10 @@
 <?php
 
-namespace Srustamov\Azericard;
+namespace Elkhansaid\Azericard;
 
 
-use Srustamov\Azericard\Contracts\SignatureGeneratorContract;
-use Srustamov\Azericard\Exceptions\AzericardException;
+use Elkhansaid\Azericard\Contracts\SignatureGeneratorContract;
+use Elkhansaid\Azericard\Exceptions\AzericardException;
 
 class SignatureGenerator implements SignatureGeneratorContract
 {

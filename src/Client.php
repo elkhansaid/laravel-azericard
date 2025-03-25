@@ -1,10 +1,10 @@
 <?php
 
-namespace Srustamov\Azericard;
+namespace Elkhansaid\Azericard;
 
 use Illuminate\Support\Facades\Http;
-use Srustamov\Azericard\Contracts\ClientContract;
-use Srustamov\Azericard\Exceptions\ClientException;
+use Elkhansaid\Azericard\Contracts\ClientContract;
+use Elkhansaid\Azericard\Exceptions\ClientException;
 
 class Client implements ClientContract
 {
@@ -36,13 +36,13 @@ class Client implements ClientContract
         return $this;
     }
 
-    public function createRefund($params):static
+    public function createRefund($params): static
     {
         return $this->sendRequest($params);
     }
 
 
-    public function completeOrder($params) : static
+    public function completeOrder($params): static
     {
         return $this->sendRequest($params);
     }
@@ -94,5 +94,4 @@ class Client implements ClientContract
     {
         return $this->response ?? '';
     }
-
 }

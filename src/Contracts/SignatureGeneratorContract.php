@@ -1,6 +1,6 @@
 <?php
 
-namespace Srustamov\Azericard\Contracts;
+namespace Elkhansaid\Azericard\Contracts;
 
 interface SignatureGeneratorContract
 {

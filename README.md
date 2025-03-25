@@ -1,14 +1,14 @@
 # Azericard Payment Package for Laravel
 
-[![GitHub license](https://img.shields.io/github/license/srustamov/laravel-azericard.svg)](https://github.com/srustamov/laravel-azericard/blob/master/LICENSE.md)
-<a href="https://packagist.org/packages/srustamov/laravel-azericard">
-<img src="https://img.shields.io/packagist/v/srustamov/laravel-azericard" alt="Latest Stable Version">
+[![GitHub license](https://img.shields.io/github/license/Elkhansaid/laravel-azericard.svg)](https://github.com/Elkhansaid/laravel-azericard/blob/master/LICENSE.md)
+<a href="https://packagist.org/packages/Elkhansaid/laravel-azericard">
+<img src="https://img.shields.io/packagist/v/Elkhansaid/laravel-azericard" alt="Latest Stable Version">
 </a>
 
 ## Requirements
 
-- Laravel **^8|^9**
-- PHP **^8.0**
+-   Laravel **^8|^9**
+-   PHP **^8.0**
 
 ## Installation
 
@@ -27,18 +27,18 @@ composer require elkhansaid/laravel-azericard:^1.0.1
 ### Publish config file
 
 ```bash
-php artisan vendor:publish --provider="Srustamov\Azericard\AzericardServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Elkhansaid\Azericard\AzericardServiceProvider" --tag="config"
 ```
 
 ## Credits
 
-- [Samir Rustamov](https://github.com/srustamov)
-- [Azericard](https://developer.azericard.com/)
+-   [Samir Rustamov](https://github.com/Elkhansaid)
+-   [Azericard](https://developer.azericard.com/)
 
 ## Example
 
-
 ### Routes
+
 ```php
 // routes
 Route::prefix('azericard')->group(function () {
@@ -49,21 +49,22 @@ Route::prefix('azericard')->group(function () {
 ```
 
 ### Controller
+
 ```php
 use App\Models\Payment\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
-use Srustamov\Azericard\Azericard;
-use Srustamov\Azericard\DataProviders\RefundData;
-use Srustamov\Azericard\Events\OrderCompleted;
-use Srustamov\Azericard\Exceptions\AzericardException;
-use Srustamov\Azericard\Exceptions\FailedTransactionException;
-use Srustamov\Azericard\Options;
+use Elkhansaid\Azericard\Azericard;
+use Elkhansaid\Azericard\DataProviders\RefundData;
+use Elkhansaid\Azericard\Events\OrderCompleted;
+use Elkhansaid\Azericard\Exceptions\AzericardException;
+use Elkhansaid\Azericard\Exceptions\FailedTransactionException;
+use Elkhansaid\Azericard\Options;
 
 class AzericardController extends Controller
 {
-    public function __construct() 
+    public function __construct()
     {
         Event::listen(OrderCompleted::class, function (OrderCompleted $event) {
             // do something
@@ -81,7 +82,7 @@ class AzericardController extends Controller
             'type'           => Transaction::TYPE_PAYMENT,
             'payment_method' => Transaction::PAYMENT_METHOD_AZERICARD,
         ]);
-           
+
 
         $formParams = $azericard->setOrder($order->id)
             ->setAmount($order->amount)
@@ -96,75 +97,75 @@ class AzericardController extends Controller
     public function callback(Azericard $azericard, Request $request)
     {
        $transaction = Trasaction::findByAzericard($request->get(Options::ORDER));
-       
+
        if(!$transaction->isPending()){
            return response()->json(['message' => 'Order already processed'], 409);
        }
-       
+
        DB::beginTransaction();
-       
-        try 
+
+        try
         {
-            if ($azericard->completeOrder($request->all())) 
+            if ($azericard->completeOrder($request->all()))
             {
                 $transaction->update([
                     'status'     => Trasaction::SUCCESS,
                     'rrn'        => $request->get(Options::RRN),
                     'int_ref'    => $request->get(Options::INT_REF),
                     'process_at' => now(),
-                ]); 
-                
+                ]);
+
                 $transaction->user->increment('balance', $transaction->amount);
-                
+
                 DB::commit();
-                
+
                 $transaction->user->notify(new TransactionSuccess($transaction));
-                
+
                 return response()->json(['message' => 'Order processed successfully'], 200);
-            } 
-            else 
+            }
+            else
             {
                 $transaction->update([
                     'status' => Trasaction::FAILED,
                     'process_at' => now(),
-                ]); 
-                
+                ]);
+
                 DB::commit();
-                
+
                 logger()->error('Azericard payment failed', $request->all());
-                
+
                 return response()->json(['message' => 'Order processed failed'], 500);
             }
-        } 
+        }
         catch (FailedTransactionException $e) {
             DB::rollBack();
-            
+
             logger()->error('Azericard | Message: '.$e->getMessage(), $request->all());
             //do something
-        } 
+        }
         catch (AzericardException $e) {
             DB::rollBack();
             //do something
-        } 
+        }
         catch (Exception $e) {
             DB::rollBack();
-        } 
+        }
         finally {
             info('Azericard payment callback called', $request->all());
         }
     }
-    
+
     public function refund(Request $request,Azericard $azericard)
     {
         $transaction = Trasaction::findOrFail($request->post('transaction_id'));
-        
+
         try
         {
             $order = Transaction::createForRefund(
-                amount : $amount = $request->post('amount'), 
+                amount : $amount = $request->post('amount'),
                 parent_id: $transaction->id
             );
-            
+
             $data = new RefundData(
                 rrn: $transaction->rrn,
                 int_ref: $transaction->int_ref,
@@ -179,10 +180,10 @@ class AzericardController extends Controller
         }
         catch (FailedTransactionException $e) {
             //info($e->getMessage(),$e->getParams());
-        } 
+        }
         catch (AzericardException $e) {
             // payment fail
-        } 
+        }
         catch (Exception $e) {
             // payment fail
         }
@@ -192,13 +193,13 @@ class AzericardController extends Controller
     public function result($orderId)
     {
         $transaction = Transaction::findByAzericard($orderId);
-        
+
         if($transaction->isSuccess()){
             return view('payment.success');
         } elseif ($transaction->isPending()){
             return view('payment.pending');
         }
-        
+
         return view('payment.failed');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Srustamov\Azericard\Events;
+namespace Elkhansaid\Azericard\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -12,7 +12,5 @@ class OrderRefunded
     public function __construct(
         public array $data,
         public string $response
-    )
-    {
-    }
+    ) {}
 }

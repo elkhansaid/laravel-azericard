@@ -1,6 +1,6 @@
 <?php
 
-namespace Srustamov\Azericard;
+namespace Elkhansaid\Azericard;
 
 use ArrayAccess;
 use Illuminate\Support\Str;

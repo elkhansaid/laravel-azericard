@@ -1,11 +1,9 @@
 <?php
 
-namespace Srustamov\Azericard\Exceptions;
+namespace Elkhansaid\Azericard\Exceptions;
 
 /**
  * Class AzericardException
- * @package Srustamov\Azericard\Exceptions
+ * @package Elkhansaid\Azericard\Exceptions
  */
-class AzericardException extends \RuntimeException
-{
-}
+class AzericardException extends \RuntimeException {}

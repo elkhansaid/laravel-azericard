@@ -1,10 +1,10 @@
 <?php
 
-namespace Srustamov\Azericard;
+namespace Elkhansaid\Azericard;
 
 use Illuminate\Support\ServiceProvider;
-use Srustamov\Azericard\Contracts\ClientContract;
-use Srustamov\Azericard\Contracts\SignatureGeneratorContract;
+use Elkhansaid\Azericard\Contracts\ClientContract;
+use Elkhansaid\Azericard\Contracts\SignatureGeneratorContract;
 
 class AzericardServiceProvider extends ServiceProvider
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Srustamov\Azericard\Events;
+namespace Elkhansaid\Azericard\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -11,7 +11,5 @@ class OrderCreated
 
     public function __construct(
         public array $data
-    )
-    {
-    }
+    ) {}
 }
