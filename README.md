@@ -15,13 +15,13 @@
 You can install the package via composer:
 
 ```bash
-composer require srustamov/laravel-azericard
+composer require elkhansaid/laravel-azericard
 ```
 
 ### For Laravel < 8 and PHP < 8
 
 ```bash
-composer require srustamov/laravel-azericard:^1.0.1
+composer require elkhansaid/laravel-azericard:^1.0.1
 ```
 
 ### Publish config file
